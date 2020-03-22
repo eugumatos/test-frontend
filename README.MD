@@ -1,4 +1,4 @@
-### Sobre a Matchbox Brasil
+## Sobre a Matchbox Brasil
 A Matchbox nasceu para revolucionar a forma como empresas e jovens se conectam e se relacionam. 
 Conheça: http://matchboxbrasil.com
 
@@ -6,7 +6,7 @@ Conheça: http://matchboxbrasil.com
 Essa teste consiste em entendermos um pouco mais sobre seus conhecimentos com HTML, CSS, JavaScript, Código responsivo, suporte a crossbrowser e lógica.
 
 
-### Desafio deve ser feito preferencialmente em Vue.js, Angular ou React
+### Desafio deve ser feito preferencialmente em REACTJS, ANGULAR ou VUEJS.
 
 Criar uma single-page application para consultar em JavaScript que faça a requisição para **/matchboxbrasil.json**
 
