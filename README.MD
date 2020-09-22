@@ -1,58 +1,44 @@
-## Sobre a Matchbox Brasil
-A Matchbox nasceu para revolucionar a forma como empresas e jovens se conectam e se relacionam. 
-Conheça: http://matchboxbrasil.com
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Teste FrontEnd para a Matchbox Brasil!
-Essa teste consiste em entendermos um pouco mais sobre seus conhecimentos com HTML, CSS, JavaScript, Código responsivo, suporte a crossbrowser e lógica.
+## Available Scripts
 
+In the project directory, you can run:
 
-### Desafio deve ser feito preferencialmente em REACTJS, ANGULAR ou VUEJS.
+### `yarn start`
 
-Criar uma single-page application para consultar em JavaScript que faça a requisição para **/matchboxbrasil.json**
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-O teste serve para conhecermos a sua forma de pensar, resolver problemas e seu estilo de código.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-### Orientações
+### `yarn test`
 
-Primeiramente, faça um fork e clone do projeto;
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Crie uma branch (pode ser com seu nome mesmo)
+### `yarn build`
 
-Depois do seu setup você precisará seguir as seguintes instruções, para construir a aplicação:
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-1. Desenvolver a página, que tem o seu layout em **matchboxbrasil-teste-front.psd**.(A única fonte usada foi a Montserrat, disponível no Google Fonts)
-2. Criar um JavaScript que faça a requisição para **/matchboxbrasil.json**
-  * Apresentar os dados requisitados pelo layout.
-  * Calcular a porcentagem de "positives" e "negatives".
-  * Ordernar os items do json a partir da porcentagem calculada acima.
-3.  **NÃO** alterar o arquivo **matchboxbrasil.json**. Em hipótese nenhuma!
-4. Se for preciso modificar a estrutura e workflow, atualizar o README.
-5. **Não submeta o Pull Request**, envie um link do seu repositório para produto@matchboxbrasil.com com o assunto "teste de front-end" :D
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-### Requisitos obrigatórios
-1. Utilizar um pré-processador CSS de sua preferência.
-2. Automação de tarefas. (Gulp? Grunt? Webpack? :D)
-3. Semântica Web
-5. Ser fiel ao .psd / .json.
-6. Procure manter a estrutura do projeto.
-  
-### Bônus
-- Acessibilidade
-- SEO
-- Performance  
-- Testes unitários
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Submissão
+### `yarn eject`
 
-Compacte o projeto em um arquivo .zip e envie para produto@matchboxbrasil.com.
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Iremos instalar e executar quaisquer dependências necessárias, então certifique-se de colocar todos os arquivos necessários e as devidas instruções.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Dúvidas?
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Em caso de dúvidas, envie e-mail para produto@matchboxbrasil.com
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
-## Obrigado!
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Agradecemos sua participação no teste. Boa sorte! :)
+To learn React, check out the [React documentation](https://reactjs.org/).
