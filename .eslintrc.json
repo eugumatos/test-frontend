@@ -26,10 +26,12 @@
         "@typescript-eslint"
     ],
     "rules": {
-	  "react-hooks/rules-of-hooks": "error",
+	    "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
       "import/prefer-default-export": "off",
+      "no-underscore-dangle": "off",
+      "no-plusplus": "off",
       "import/extensions": [
         "error",
         "ignorePackages",

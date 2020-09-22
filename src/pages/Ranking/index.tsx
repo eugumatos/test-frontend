@@ -1,78 +1,78 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AiFillCaretLeft, AiFillCaretDown } from 'react-icons/ai';
 
-import ranking from '../../data/matchboxbrasil.json';
+import rankingJSON from '../../data/matchboxbrasil.json';
 
 import Logo from '../../assets/logo.png';
 
 import './styles.scss';
 
-interface Ranked {
+interface Rating {
   __id: string;
   name: string;
   description: string;
   picture: string;
   like: number;
-  deslike: number;
+  dislike: number;
   rank: number;
 }
 
 const Ranking: React.FC = () => {
-  const [placings, setPlacings] = useState<Ranked[]>([]);
+  const [ratings, setRatings] = useState<Rating[]>([]);
 
-  const calculatePlacing = useCallback(() => {
-    const newPlacing: Ranked[] = [];
+  const calculateRating = useCallback(() => {
+    const newRating: Rating[] = [];
 
-    ranking.data.forEach(data => {
-      const { __id, description, name, picture, positive, negative } = data;
+    rankingJSON.data.forEach((data) => {
+      const {
+        __id, description, name, picture, positive, negative,
+      } = data;
 
       if (positive !== null) {
         const likes = Math.round((positive / (positive + negative)) * 100);
-        const deslikes = Math.round((negative / (positive + negative)) * 100);
+        const dislikes = Math.round((negative / (positive + negative)) * 100);
 
-        const id = ranking.data.findIndex(ranked => ranked.__id === data.__id);
+        const id = rankingJSON.data.findIndex((ranked) => ranked.__id === data.__id);
 
-        newPlacing[id] = {
+        newRating[id] = {
           __id,
           description,
           name,
           picture,
           like: likes,
-          deslike: deslikes,
+          dislike: dislikes,
           rank: 0,
         };
       } else {
         const likes = Math.round((0 / (0 + negative)) * 100);
-        const deslikes = Math.round((negative / (0 + negative)) * 100);
+        const dislikes = Math.round((negative / (0 + negative)) * 100);
 
-        const id = ranking.data.findIndex(ranked => ranked.__id === data.__id);
+        const id = rankingJSON.data.findIndex((ranked) => ranked.__id === data.__id);
 
-        newPlacing[id] = {
+        newRating[id] = {
           __id,
           description,
           name,
           picture,
           like: likes,
-          deslike: deslikes,
+          dislike: dislikes,
           rank: 0,
         };
       }
     });
 
-    newPlacing.sort((a, b) => {
-      return b.like - a.like;
-    });
+    newRating.sort((a, b) => b.like - a.like);
 
-    for (let i = 0; i < newPlacing.length; i++) {
-      newPlacing[i].rank = i + 1;
+    for (let i = 0; i < newRating.length; i++) {
+      newRating[i].rank = i + 1;
     }
 
-    setPlacings(newPlacing);
+    setRatings(newRating);
   }, []);
 
   useEffect(() => {
-    calculatePlacing();
-  }, [calculatePlacing]);
+    calculateRating();
+  }, [calculateRating]);
 
   return (
     <>
@@ -83,37 +83,37 @@ const Ranking: React.FC = () => {
             <h1 className="dashboard__title">rancking</h1>
           </div>
           <div className="dashboard__ranking">
-            {placings.map(rankeds => (
-              <div className="dashboard__ranked" key={rankeds.__id}>
+            {ratings.map((ranked) => (
+              <div className="dashboard__ranked" key={ranked.__id}>
                 <div className="dashboard__avatar">
                   <img
-                    src={rankeds.picture}
+                    src={ranked.picture}
                     className="dashboard__avatar-picture"
                     alt="Avatar"
                   />
                   <span className="dashboard__avatar-placing">
-                    {rankeds.rank}
+                    {ranked.rank}
                   </span>
                 </div>
 
                 <input
                   className="dashboard__check"
                   type="checkbox"
-                  id={rankeds.__id}
+                  id={ranked.__id}
                 />
 
-                <label htmlFor={rankeds.__id}>
+                <label htmlFor={ranked.__id}>
                   <div className="dashboard__ranked-owner">
                     <strong className="dashboard__ranked-name">
-                      {rankeds.name}
+                      {ranked.name}
                     </strong>
                     <p className="dashboard__ranked-description">
-                      {rankeds.description}
+                      {ranked.description}
                     </p>
                   </div>
                 </label>
 
-                <div className="dashboard__survey" key={rankeds.__id}>
+                <div className="dashboard__survey" key={ranked.__id}>
                   <div className="dashboard__survey-item">
                     <AiFillCaretLeft
                       size={18}
@@ -127,13 +127,13 @@ const Ranking: React.FC = () => {
                     />
                     <span className="dashboard__text">Gostam</span>
                     <h3 className="dashboard__percentage">
-                      {`${rankeds.like}%`}
+                      {`${ranked.like}%`}
                     </h3>
                   </div>
                   <div className="dashboard__survey-item">
                     <span className="dashboard__text">Não gostam</span>
                     <h3 className="dashboard__percentage">
-                      {`${rankeds.deslike}%`}
+                      {`${ranked.dislike}%`}
                     </h3>
                   </div>
                 </div>
