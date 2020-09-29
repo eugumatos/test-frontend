@@ -14,7 +14,6 @@ interface Rating {
   picture: string;
   like: number;
   dislike: number;
-  rank: number;
 }
 
 const Ranking: React.FC = () => {
@@ -23,7 +22,7 @@ const Ranking: React.FC = () => {
   const calculateRating = useCallback(() => {
     const newRating: Rating[] = [];
 
-    rankingJSON.data.forEach((data) => {
+    rankingJSON.data.forEach((data, key) => {
       const {
         __id, description, name, picture, positive, negative,
       } = data;
@@ -32,40 +31,30 @@ const Ranking: React.FC = () => {
         const likes = Math.round((positive / (positive + negative)) * 100);
         const dislikes = Math.round((negative / (positive + negative)) * 100);
 
-        const id = rankingJSON.data.findIndex((ranked) => ranked.__id === data.__id);
-
-        newRating[id] = {
+        newRating[key] = {
           __id,
           description,
           name,
           picture,
           like: likes,
           dislike: dislikes,
-          rank: 0,
         };
       } else {
         const likes = Math.round((0 / (0 + negative)) * 100);
         const dislikes = Math.round((negative / (0 + negative)) * 100);
 
-        const id = rankingJSON.data.findIndex((ranked) => ranked.__id === data.__id);
-
-        newRating[id] = {
+        newRating[key] = {
           __id,
           description,
           name,
           picture,
           like: likes,
           dislike: dislikes,
-          rank: 0,
         };
       }
     });
 
     newRating.sort((a, b) => b.like - a.like);
-
-    for (let i = 0; i < newRating.length; i++) {
-      newRating[i].rank = i + 1;
-    }
 
     setRatings(newRating);
   }, []);
@@ -83,7 +72,7 @@ const Ranking: React.FC = () => {
             <h1 className="dashboard__title">rancking</h1>
           </div>
           <div className="dashboard__ranking">
-            {ratings.map((ranked) => (
+            {ratings.map((ranked, key) => (
               <div className="dashboard__ranked" key={ranked.__id}>
                 <div className="dashboard__avatar">
                   <img
@@ -92,7 +81,7 @@ const Ranking: React.FC = () => {
                     alt="Avatar"
                   />
                   <span className="dashboard__avatar-placing">
-                    {ranked.rank}
+                    {key + 1}
                   </span>
                 </div>
 
